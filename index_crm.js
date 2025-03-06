@@ -5,7 +5,7 @@ import path from 'path'
 
 async function WebScraping (){
     let dirorigem = 'Y:\\Downloads'
-    let dirdestino = 'Y:\\REDECASTELO'
+    let dirdestino = 'Y:\\RedeCastelo'
     let filehandler = new FileHandler()
     let opts = new chrome.Options()
     let prefs = {"download.default_directory": "Y:\\Downloads"}
@@ -28,7 +28,7 @@ async function WebScraping (){
         let faturas = await driver.findElements(By.tagName('tr'))
         let dia = new Date().toLocaleDateString()
         for(let i=0; i< faturas.length - 1; i++){
-            let xpNumFat = `//*[@id="results"]/tr[${i+1}]/td[1]`
+            let xpNumFat = `//*[@id="results"]/tr[${i+1}]/td[6]`
             let xpEmissao = `//*[@id="results"]/tr[${i+1}]/td[3]`
             let numfat = await faturas[i].findElement(By.xpath(xpNumFat)).getText()
             let dtaemissao = await faturas[i].findElement(By.xpath(xpEmissao)).getText()
