@@ -2,6 +2,7 @@ import {Builder, Browser, By, until, Key} from 'selenium-webdriver'
 import chrome from 'selenium-webdriver/chrome.js'
 import FileHandler from './src/Arquivos.js'
 import path from 'path'
+import 'dotenv/config'
 
 async function WebScraping (){
     let dirorigem = 'Y:\\Downloads'
@@ -18,8 +19,8 @@ async function WebScraping (){
         let usuario = await driver.findElement(By.xpath('//*[@id="txtLoginEmail"]'))
         let senha = await driver.findElement(By.xpath('//*[@id="txtLoginPassword"]'))
         let btnlogin = await driver.findElement(By.xpath('//*[@id="btnLogin"]'))
-        await usuario.sendKeys('campinas@nslogtransportes.com.br')
-        await senha.sendKeys('!Oku1JRb')
+        await usuario.sendKeys(process.env.CRM_USER)
+        await senha.sendKeys(process.env.CRM_PASSWORD)
         await btnlogin.click()
         await driver.sleep(5000)
 
